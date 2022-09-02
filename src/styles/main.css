@@ -44,7 +44,7 @@
   line-height: 60px;
   color: #000;
   text-align: center;
-  word-break: break-all;
+  word-break: keep-all;
 }
 .red-text {
   color: #c00000;
@@ -54,7 +54,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 30px;
+  column-gap: 20px;
   row-gap: 10px;
   width: 100%;
   margin-top: 0px;
@@ -63,7 +63,7 @@
   display: inline-flex;
   position: relative;
   align-items: center;
-  width: 495px;
+  width: 490px;
   height: 180px;
   cursor: pointer;
   font-size: 35px;
@@ -108,7 +108,7 @@
 .header {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  width: 1024px;
   height: 20px;
   padding-right: 20px;
   background-color: #fff;

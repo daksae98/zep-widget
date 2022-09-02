@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="./background.jpeg" as="image" />
     <link rel="preload" href="./button.png" as="image" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>zep-widget</title>
   </head>
   <body>
     <div class="container">
+      <div class="header">
+        <div class="button_close">
+          <i onclick="closeWidget()" class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
       <main class="main">
         <img class="bg-image" src="./four.jpeg" alt="배경" />
         <div class="textWrapper">

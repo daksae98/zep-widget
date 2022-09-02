@@ -8,11 +8,11 @@ interface Quiz {
 
 const QUIZZES: Quiz[] = [
   {
-    quiz: "Troll: I don’t like __________ because it is hot.",
+    quiz: "Choose the correct response to the troll’s question. <br />Troll: I don’t like __________ because it is hot.",
     buttonTexts: ["Winter", "Summer", "Spring", "Fall"],
   },
   {
-    quiz: "Troll: 나는 가을을 좋아해. 왜냐하면 시원하거든.",
+    quiz: "Choose the correct response to the troll’s question. <br />Troll: 나는 가을을 좋아해. 왜냐하면 시원하거든.",
     buttonTexts: [
       "I like fall because it is warm",
       "I like autumn because it is cool",
@@ -21,15 +21,35 @@ const QUIZZES: Quiz[] = [
     ],
   },
   {
-    quiz: "Q. __________________________<br/> A.I like winter because I can go snowboarding",
+    quiz: "Choose the correct response to the troll’s question. <br />Troll: Do you like winter? Why?",
+    buttonTexts: [
+      "I like winter because it is hot.",
+      "I don’t like winter because I can’t go skiing.",
+      "I like winter because I can go snowboarding",
+      "I don’t like winter because it is too hot.",
+    ],
+  },
+  {
+    quiz: "How would you ask the troll to get the following response.<br/>Q. __________________________<br/>A. I like winter because I can go snowboarding",
     buttonTexts: [
       "That season do you like?",
       "Witch season do you like?",
       "When season do you like?",
-      "Which season do you like? ",
+      "Which season do you like?",
+    ],
+  },
+  {
+    quiz: "Choose the correct word to the following blank.<br/>I (a)_____  fall (b) ________ of the cool weather.",
+    buttonTexts: [
+      "(a) swimming (b) because",
+      "(a) because (b) like",
+      "(a) like (b) because",
+      "(a) don’t like (b) due to",
     ],
   },
 ];
+
+const ANSWERS: string[] = ["1", "2", "3", "4", "5"];
 
 let step = 0;
 let correctAnswerCount = 0;
@@ -99,57 +119,46 @@ buttonOne?.addEventListener("click", () => {
   removeText();
   switch (step) {
     case 0: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[1].buttonTexts);
-        setInnerHTML(mainQuestion, "Amelia likes summer because it is warm");
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 1: {
-      incorrect("David likes summer because he can go swimming");
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[2].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "David don’t like winter because it is cold"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 2: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia likes winter because she can go skiing"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 3: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia suggests to book ski passes in the winter"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 4: {
-      incorrect(
-        "Amelia suggests to book ski passes in the fall not in the winter"
-      );
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
         setInnerHTML(
-          incorrectAnswer,
+          correctAnswer,
           `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
         );
       }, 2000);
-      setTimeout(closeWidget, 4000);
+      setTimeout(() => closeWidget(), 4000);
       break;
     }
   }
@@ -161,55 +170,44 @@ buttonTwo?.addEventListener("click", () => {
     case 0: {
       correct();
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(mainQuestion, "Amelia likes summer because it is warm");
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 1: {
-      incorrect("David likes summer because he can go swimming");
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "David don’t like winter because it is cold"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 2: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia likes winter because she can go skiing"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 3: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia suggests to book ski passes in the winter"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 4: {
-      incorrect(
-        "Amelia suggests to book ski passes in the fall not in the winter"
-      );
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
         setInnerHTML(
-          incorrectAnswer,
+          correctAnswer,
           `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
         );
       }, 2000);
-      setTimeout(closeWidget, 4000);
+      setTimeout(() => closeWidget(), 4000);
       break;
     }
   }
@@ -219,57 +217,46 @@ buttonThree?.addEventListener("click", () => {
   removeText();
   switch (step) {
     case 0: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(mainQuestion, "Amelia likes summer because it is warm");
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 1: {
-      incorrect("David likes summer because he can go swimming");
+      correct();
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "David don’t like winter because it is cold"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 2: {
       correct();
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia likes winter because she can go skiing"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 3: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia suggests to book ski passes in the winter"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 4: {
-      incorrect(
-        "Amelia suggests to book ski passes in the fall not in the winter"
-      );
+      correct();
       setTimeout(() => {
         setInnerHTML(
-          incorrectAnswer,
+          correctAnswer,
           `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
         );
       }, 2000);
-      setTimeout(closeWidget, 4000);
+      setTimeout(() => closeWidget(), 4000);
       break;
     }
   }
@@ -279,119 +266,52 @@ buttonFour?.addEventListener("click", () => {
   removeText();
   switch (step) {
     case 0: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(mainQuestion, "Amelia likes summer because it is warm");
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 1: {
-      incorrect("David likes summer because he can go swimming");
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "David don’t like winter because it is cold"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 2: {
-      correct();
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia likes winter because she can go skiing"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 3: {
       correct();
       setTimeout(() => {
-        setQuestionMode(QUIZZES[0].buttonTexts);
-        setInnerHTML(
-          mainQuestion,
-          "Amelia suggests to book ski passes in the winter"
-        );
+        setInnerHTML(mainQuestion, QUIZZES[step + 1].quiz);
+        setQuestionMode(QUIZZES[step + 1].buttonTexts);
       }, 2000);
       break;
     }
     case 4: {
-      incorrect(
-        "Amelia suggests to book ski passes in the fall not in the winter"
-      );
+      incorrect(ANSWERS[step]);
       setTimeout(() => {
-        setInnerHTML(
-          incorrectAnswer,
-          `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
-        );
+        setTimeout(() => {
+          setInnerHTML(
+            correctAnswer,
+            `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
+          );
+        }, 2000);
       }, 2000);
-      setTimeout(closeWidget, 4000);
+      setTimeout(() => closeWidget(), 4000);
       break;
     }
   }
 });
-
-// falseButton?.addEventListener("click", () => {
-//   removeText();
-//   switch (step) {
-//     case 0: {
-//       incorrect("David likes summer because he can go swimming");
-//       setTimeout(() => {
-//          setQuestionMode(QUIZZES[0].buttonTexts);
-//         setInnerHTML(mainQuestion, "Amelia likes summer because it is warm");
-//       }, 2000);
-//       break;
-//     }
-//     case 1: {
-//       correct();
-//       setTimeout(() => {
-//          setQuestionMode(QUIZZES[0].buttonTexts);
-//         setInnerHTML(
-//           mainQuestion,
-//           "David don’t like winter because it is cold"
-//         );
-//       }, 2000);
-//       break;
-//     }
-//     case 2: {
-//       incorrect("David don’t like winter because it is cold");
-//       setTimeout(() => {
-//          setQuestionMode(QUIZZES[0].buttonTexts);
-//         setInnerHTML(
-//           mainQuestion,
-//           "Amelia likes winter because she can go skiing"
-//         );
-//       }, 2000);
-//       break;
-//     }
-//     case 3: {
-//       incorrect("Amelia likes winter because she can go skiing");
-//       setTimeout(() => {
-//          setQuestionMode(QUIZZES[0].buttonTexts);
-//         setInnerHTML(
-//           mainQuestion,
-//           "Amelia suggests to book ski passes in the winter"
-//         );
-//       }, 2000);
-//       break;
-//     }
-//     case 4: {
-//       correct();
-//       setTimeout(() => {
-//         setInnerHTML(
-//           correctAnswer,
-//           `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
-//         );
-//       }, 2000);
-//       setTimeout(closeWidget, 4000);
-//       break;
-//     }
-//   }
-// });
 
 function closeWidget() {
   window.parent.postMessage(
