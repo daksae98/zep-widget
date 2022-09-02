@@ -10,19 +10,29 @@
   <body>
     <div class="container">
       <main class="main">
-        <img class="bg-image" src="./background.jpeg" alt="배경" />
-        <p id="main-question" class="text">
-          David likes summer because he can go swimming
-        </p>
-        <p id="main-bool-question" class="text red-text">True? Or False?</p>
+        <img class="bg-image" src="./four.jpeg" alt="배경" />
+        <div class="textWrapper">
+          <span id="main-question" class="text">
+            Choose the correct response to the troll’s question. <br />
+            Troll: I don’t like __________ because it is hot.
+          </span>
+        </div>
         <div class="button-box">
-          <div id="true-button" role="button" class="button">
-            <img class="button-image" src="/button.png" alt="버튼" />
-            <span id="true-button-text">True</span>
+          <div id="button-one" role="button" class="button">
+            <img class="button-image" src="./buttonOne.png" alt="버튼" />
+            <span id="button-one-text">Winter</span>
           </div>
-          <div id="false-button" role="button" class="button">
-            <img class="button-image" src="./button.png" alt="버튼" />
-            <span id="false-button-text">False</span>
+          <div id="button-two" role="button" class="button">
+            <img class="button-image" src="/buttonTwo.png" alt="버튼" />
+            <span id="button-two-text">Summer</span>
+          </div>
+          <div id="button-three" role="button" class="button">
+            <img class="button-image" src="./buttonThree.png" alt="버튼" />
+            <span id="button-three-text">Spring</span>
+          </div>
+          <div id="button-four" role="button" class="button">
+            <img class="button-image" src="/buttonFour.png" alt="버튼" />
+            <span id="button-four-text">Fall</span>
           </div>
         </div>
         <div id="correct-answer"></div>
