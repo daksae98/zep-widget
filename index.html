@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href="./background.jpeg" as="image" />
+    <link rel="preload" href="./button.png" as="image" />
+    <title>David likes summer ?</title>
+  </head>
+  <body>
+    <div class="container">
+      <main class="main">
+        <img class="bg-image" src="./background.jpeg" alt="배경" />
+
+        <div id="main-question">
+          <p class="text">David likes summer because he can go swimming</p>
+          <p class="text red-text">True? Or False?</p>
+        </div>
+
+        <div class="button-box">
+          <div id="true-button" role="button" class="button">
+            <img class="button-image" src="/button.png" alt="버튼" />
+            <span id="true-button-text">True</span>
+          </div>
+          <div id="false-button" role="button" class="button">
+            <img class="button-image" src="./button.png" alt="버튼" />
+            <span id="false-button-text">False</span>
+          </div>
+        </div>
+        <div id="correct-answer"></div>
+        <div id="incorrect-answer"></div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
