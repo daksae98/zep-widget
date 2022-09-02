@@ -106,9 +106,10 @@ trueButton?.addEventListener("click", () => {
       setTimeout(() => {
         setInnerHTML(
           incorrectAnswer,
-          `<div class="result-backdrop"><p class="incorrect">총 ${correctAnswerCount}문제 맞췄습니다!</p></div>`
+          `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
         );
       }, 2000);
+      setTimeout(closeWidget, 4000);
       break;
     }
   }
@@ -163,10 +164,20 @@ falseButton?.addEventListener("click", () => {
       setTimeout(() => {
         setInnerHTML(
           correctAnswer,
-          `<div class="result-backdrop"><p class="incorrect">총 ${correctAnswerCount}문제 맞췄습니다!</p></div>`
+          `<div class="result-backdrop"><p class="text">You Got ${correctAnswerCount}/5 Correct!</p></div>`
         );
       }, 2000);
+      setTimeout(closeWidget, 4000);
       break;
     }
   }
 });
+
+function closeWidget() {
+  window.parent.postMessage(
+    {
+      type: "close",
+    },
+    "*"
+  );
+}
